@@ -476,23 +476,23 @@
         rm -f k8s-attach-manifest.yaml
 
         kubectl config use-context $DEV_CLUSTER_NAME
-        tmc cluster attach -n $DEV_CLUSTER_NAME -g dekt
+        tmc cluster attach -n $DEV_CLUSTER_NAME -g $TMC_CLUSTER_GROUP
         kubectl apply -f k8s-attach-manifest.yaml 
 
         rm -f k8s-attach-manifest.yaml
 
         kubectl config use-context $STAGE_CLUSTER_NAME
-        tmc cluster attach -n $STAGE_CLUSTER_NAME -g dekt
+        tmc cluster attach -n $STAGE_CLUSTER_NAME -g $TMC_CLUSTER_GROUP
         kubectl apply -f k8s-attach-manifest.yaml
         rm -f k8s-attach-manifest.yaml
 
         kubectl config use-context $PROD_CLUSTER_NAME
-        tmc cluster attach -n $PROD_CLUSTER_NAME -g dekt
+        tmc cluster attach -n $PROD_CLUSTER_NAME -g $TMC_CLUSTER_GROUP
         kubectl apply -f k8s-attach-manifest.yaml
         rm -f k8s-attach-manifest.yaml
 
         kubectl config use-context $BROWNFIELD_CLUSTER_NAME
-        tmc cluster attach -n $BROWNFIELD_CLUSTER_NAME -g dekt
+        tmc cluster attach -n $BROWNFIELD_CLUSTER_NAME -g $TMC_CLUSTER_GROUP
         kubectl apply -f k8s-attach-manifest.yaml
         rm -f k8s-attach-manifest.yaml
 
@@ -596,7 +596,7 @@ install-demo)
     ;;
 delete-all)
     scripts/dektecho.sh prompt  "Are you sure you want to delete all clusters?" && [ $? -eq 0 ] || exit
-    ./dekt-DevSecOps.sh besad
+    ./demo.sh besad
     innerloop-handler delete-clusters
     outerloop-handler delete-clusters
     ;;
