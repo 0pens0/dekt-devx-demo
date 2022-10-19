@@ -22,8 +22,6 @@ This repo contains artifacts to run a demo illustrating the vision and capabilit
 
 - Create a folder named```.config``` in the ```dekt-devx-demo``` directory
 
-- copy ```config-templates/demo-values.yaml``` to ```.config/demo-values.yaml```
-
 - update all values in ```.config/demo-values.yaml```
 
 - Generate demo config yamls
